@@ -1,6 +1,7 @@
 package Presenter;
 
 import Model.AnimalStorage;
+import Model.Counter;
 
 import javax.imageio.IIOException;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ public class Presenter implements GetNewAnimal, SeeListOfCommand, TrainNewTeams{
                             Integer.parseInt(birth_day.split("-")[1]) - 1,Integer.parseInt(birth_day.split("-")[2]));
                     if (calendar.before(new GregorianCalendar())){
                         animalStorage.addNewAnimal(type_of_animal, name, birth_day, command);
+                        Counter.addCount();
                     } else {
                         System.out.println("Не верный формат даты рождени животного.");
                     }
